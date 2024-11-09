@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Your Health Tracker Results</h1>
+        
+        <h2>Submitted Information</h2>
+
+        <div id="submittedData"></div>
+
+        <a href="health-input-form.html">Go Back to Form</a>
+    </div>
+
+    <script>
+        function getQueryParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            let output = "<ul>";
+
+            for (let param of urlParams.entries()) {
+            output += `<li><strong>${param[0]}</strong>: ${param[1]}</li>`;
+            }
+
+            output += "</ul>";
+            return output;
+        }
+
+        document.getElementById('submittedData').innerHTML = getQueryParams();
+    </script>
+
+</body>
+</html>
