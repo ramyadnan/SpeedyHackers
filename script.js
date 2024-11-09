@@ -5,12 +5,40 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById('earth-container').appendChild(renderer.domElement);
 
+// Add lighting
+const ambientLight = new THREE.AmbientLight(0x404040); // Soft white light
+scene.add(ambientLight);
+
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+directionalLight.position.set(5, 5, 5).normalize();
+scene.add(directionalLight);
+
 // Create the Earth geometry and material
 const geometry = new THREE.SphereGeometry(1, 32, 32);
-const texture = new THREE.TextureLoader().load('https://threejsfundamentals.org/threejs/resources/images/earth.jpg');
-const material = new THREE.MeshBasicMaterial({ map: texture });
-const earth = new THREE.Mesh(geometry, material);
-scene.add(earth);
+const textureLoader = new THREE.TextureLoader();
+let earth;
+
+textureLoader.load(
+    'https://static.wikia.nocookie.net/planet-texture-maps/images/a/aa/Earth_Texture_Full.png/revision/latest?cb=20190401163425', // New texture URL
+    (texture) => {
+        console.log('Texture loaded', texture);
+        const material = new THREE.MeshStandardMaterial({ map: texture });
+        earth = new THREE.Mesh(geometry, material);
+        scene.add(earth);
+
+        // Handle scroll event to rotate the Earth
+        window.addEventListener('scroll', () => {
+            if (earth) {
+                const scrollY = window.scrollY;
+                earth.rotation.y = scrollY * 0.01;
+            }
+        });
+    },
+    undefined,
+    (err) => {
+        console.error('An error happened', err);
+    }
+);
 
 // Position the camera
 camera.position.z = 3;
@@ -21,9 +49,3 @@ function animate() {
     renderer.render(scene, camera);
 }
 animate();
-
-// Handle scroll event to rotate the Earth
-window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    earth.rotation.y = scrollY * 0.01;
-});
