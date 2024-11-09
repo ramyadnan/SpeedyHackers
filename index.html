@@ -1,65 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Life Expectancy Result</title>
-    <link rel="stylesheet" href="result.css">
+    <title>3D Rotating Earth</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="container">
-        <h1>Your Life Expectancy Result</h1>
-        <p>Your estimated life expectancy is: <span id="life-expectancy"></span> years</p>
-        <p>You fall into the category: <span id="category"></span></p>
-
-        <div id="category-image-container">
-            <img id="category-image" src="" alt="Category Image">
-        </div>
-        <div id="category-description"></div>
-    </div>
-
-    <script>
-        // Function to get query parameters from the URL
-        function getQueryParams() {
-            const urlParams = new URLSearchParams(window.location.search);
-            return {
-                lifeExpectancy: urlParams.get('lifeExpectancy'),
-                health: urlParams.get('health')
-            };
-        }
-
-        // Update result with the query parameters
-        window.onload = function() {
-            const params = getQueryParams();
-            const lifeExpectancy = params.lifeExpectancy;
-            const category = params.health;
-
-            document.getElementById('life-expectancy').textContent = lifeExpectancy;
-            document.getElementById('category').textContent = category;
-
-            // Assign category-specific image and description
-            let categoryImage = '';
-            let categoryDescription = '';
-            if (category === 'Timeless') {
-                categoryImage = '../images/5.png';
-                categoryDescription = 'You\'re in excellent health! Keep living a fulfilling life.';
-            } else if (category === 'Vibrant') {
-                categoryImage = '../images/4.png';
-                categoryDescription = 'You are living a vibrant life!';
-            } else if (category === 'Stable') {
-                categoryImage = '../images/3.png';
-                categoryDescription = 'Your life expectancy is stable. Stay active!';
-            } else if (category === 'Suboptimal') {
-                categoryImage = '../images/2.png';
-                categoryDescription = 'Your health needs attention for better longevity.';
-            } else if (category === 'Critical') {
-                categoryImage = '../images/1.png';
-                categoryDescription = 'You are at high risk. Please consult a doctor.';
-            }
-
-            document.getElementById('category-image').src = categoryImage;
-            document.getElementById('category-description').textContent = categoryDescription;
-        }
-    </script>
+    <div id="earth-container"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
 </body>
+
+
+
 </html>

@@ -20,7 +20,13 @@
         </div>
         <div id="category-description"></div>
 
-        <!-- <div id="submittedData"></div> -->
+        <div class="share-container">
+            <h3>Share Your Results</h3>
+            <a href="#" id="facebook-share" target="_blank" class="share-button facebook">Share on Facebook</a>
+            <a href="#" id="twitter-share" target="_blank" class="share-button twitter">Tweet</a>
+            <a href="#" id="linkedin-share" target="_blank" class="share-button linkedin">Share on LinkedIn</a>
+        </div>
+        
 
         <a href="health-input-form.html">Go Back to Form</a>
     </div>
@@ -89,6 +95,34 @@
                     return "";
             }
         }
+        // Set up share links for social media
+        function setUpShareLinks() {
+            const currentUrl = window.location.href;
+            const lifeExpectancy = document.getElementById('life-expectancy').textContent;
+            const category = document.getElementById('category').textContent;
+
+            const shareText = `My estimated life expectancy is ${lifeExpectancy} years and I fall into the "${category}" category! Find out yours!`;
+
+            // Facebook share link
+            document.getElementById('facebook-share').href =
+                `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}&quote=${encodeURIComponent(shareText)}`;
+
+            // Twitter share link
+            document.getElementById('twitter-share').href =
+                `https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(shareText)}`;
+
+            // LinkedIn share link
+            document.getElementById('linkedin-share').href =
+                `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`;
+        }
+
+        // Call the function after page load to ensure all elements are available
+        window.onload = function() {
+            getQueryParams(); // Ensure this is called to populate life expectancy and category
+            setUpShareLinks();
+        };
+
+
     
         // Call the function on page load
         window.onload = getQueryParams;
