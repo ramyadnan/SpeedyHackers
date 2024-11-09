@@ -69,5 +69,10 @@ def dashboard():
     user = User.query.get(session['user_id'])
     return render_template('dashboard.html', username=user.username)
 
+@app.route('/health-input-form')
+def health_input_form():
+    era = request.args.get('era')
+    return render_template('health-input-form.html', selected_era=era)
+
 if __name__ == '__main__':
     app.run(debug=True)
