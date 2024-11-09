@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="flash">{{ message }}</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div class="container">
+    <div class="hero-section text-center">
+        <h1>Time Travel Survival Calculator</h1>
+        <p class="lead">Discover your life expectancy across different historical eras</p>
+
+        <div class="cta-buttons">
+            <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg">Login</a>
+            <a href="{{ url_for('register') }}" class="btn btn-secondary btn-lg">Register</a>
+        </div>
+    </div>
+
+    <div id="earth-container"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+{% endblock %}
