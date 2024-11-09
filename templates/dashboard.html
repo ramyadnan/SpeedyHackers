@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Time Survival{% endblock %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="flash">{{ message }}</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div class="container">
+    <h1>Where would you like to travel to?</h1>
+    <form id="eraForm" action="dashboard.html" method="GET">
+
+        <!-- Choose Era with Image Buttons -->
+        <div class="era-buttons">
+            <button type="submit" name="era" value="egypt" class="era-button">
+                <img src="images/ancient-egypt.jpg" alt="Ancient Egypt" class="era-image">
+                <p>Ancient Egypt</p>
+            </button>
+
+            <button type="submit" name="era" value="medieval" class="era-button">
+                <img src="images/medieval-europe.jpg" alt="Medieval Europe" class="era-image">
+                <p>Medieval Europe</p>
+            </button>
+
+            <button type="submit" name="era" value="world-war" class="era-button">
+                <img src="images/world-war.jpg" alt="World War Times" class="era-image">
+                <p>World War Times</p>
+            </button>
+
+            <button type="submit" name="era" value="present-day" class="era-button">
+                <img src="images/present-day.jpg" alt="Present Day" class="era-image">
+                <p>Present Day</p>
+            </button>
+        </div>
+
+    </form>
+</div>
+
+<script src="logic.js"></script> <!-- Link to your JavaScript file for logic -->
+{% endblock %}
