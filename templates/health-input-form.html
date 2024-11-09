@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time Survival</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
     <div class="container">
         <h1>Time Survival</h1>
-        <p id="eraDisplay"></p> 
-        <form id="healthForm" action="/process" method="POST">
+        <p id="eraDisplay">Selected Era: {{ era | capitalize }}</p> 
+        <form id="healthForm" action="{{ url_for('process_form') }}" method="POST">
+            <input type="hidden" name="eraDisplay" value="{{ era }}">
+            
             <!-- Basic Demographic Section -->
             <section>
                 <h2>Personal Information</h2>

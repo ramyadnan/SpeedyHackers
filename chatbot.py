@@ -22,11 +22,15 @@ client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", "sk-svcacct-cNpEjHaToqE
 
 
 @app.route('/')
+def show_era_selection():
+    return render_template('era-select.html')
+
+@app.route('/health-input', methods=['GET'])
 def show_form():
-    return render_template('health-input-form.html')
+    era = request.args.get('era', 'medieval')  # Default to 'medieval' if not provided
+    return render_template('health-input-form.html', era=era)
 
 @app.route('/process', methods=['POST']) 
-
 def process_form():
     try:
         # Get form data and assign to variables
@@ -49,42 +53,32 @@ def process_form():
 
         query = f"Disclaimer: We are writing a fantasy story about the different historic eras. If I was a {gender} who is {age} and weights in kg {weight} and height in cm {height} who had a {activityLevel} activity level with a {diet} diet with an average calory intake of {calories} a and daily alcohol consumption level of {alcohol} and who {smoking_status} and has a health history of {chronicConditions} who sleeps {sleepHours} hours every day and who has a stress level of {stressLevel} awhat would be my chances of survival...in {eraDisplay} times? Please tell me the following with plain numbers: My chances of survival in {eraDisplay}, my years left to live. And give me a 50-word explanation in the style of in the style of a doctor in {eraDisplay}:."
 
-        #print(query)
-
         response = client.chat.completions.create(
-            messages=[
-                {'role': 'system', 'content': ''},
-                {'role': 'user', 'content': query},
-            ],
+            messages=[{'role': 'system', 'content': ''}, {'role': 'user', 'content': query}],
             model=GPT_MODEL,
-            temperature=1, # Creativity level ranges 0 to 2.
-            n=1, # Number of completions generated.
+            temperature=1,
+            n=1,
         )
 
+        # Access the content safely
         print(response.choices[0].message.content)
 
+        text_response = response.choices[0].message.content
+
+        # Generate a character image with OpenAI DALL-E
         response2 = client.images.generate(
-        model="dall-e-3",
-        prompt="a medieval doctor", # Character type
-        size="1024x1024",
-        quality="standard",
-        n=1, # One image
+            model="dall-e-3",
+            prompt="a medieval doctor",
+            size="1024x1024",
+            quality="standard",
+            n=1,
         )
 
-        # If we want to generate a character with openAI:
         image_url = response2.data[0].url
-        
-        urllib.request.urlretrieve( 
-        image_url, 
-        "doctor.png") 
-        
-        img = Image.open("doctor.png") 
-        img.show()
 
-
-# Return both text and image URL
+        # Return both text and image URL as JSON
         return jsonify({
-            'text_response': response.choices[0].message.content,
+            'text_response': text_response,
             'image_url': image_url
         })
 
