@@ -1,0 +1,93 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Container styling */
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Title styling */
+.container h1 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Life expectancy result */
+#life-expectancy {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+#category {
+    display: block;
+    margin-top: 10px;
+    font-size: 1.5em;
+    color: #666;
+}
+
+/* Category styling */
+#category-description {
+    font-size: 1.2em;
+    margin-top: 20px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Category-specific colors */
+.critical {
+    color: #D32F2F; /* Red for critical category */
+}
+
+.suboptimal {
+    color: #F57C00; /* Orange for suboptimal category */
+}
+
+.stable {
+    color: #1976D2; /* Blue for stable category */
+}
+
+.vibrant {
+    color: #388E3C; /* Green for vibrant category */
+}
+
+.timeless {
+    color: #512DA8; /* Purple for timeless category */
+}
+
+/* Category image */
+#category-image-container {
+    margin-top: 20px;
+}
+
+#category-image {
+    max-width: 80%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Back link styling */
+a {
+    display: inline-block;
+    margin-top: 30px;
+    color: #007BFF;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+a:hover {
+    text-decoration: underline;
+}
