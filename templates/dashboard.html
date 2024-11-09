@@ -14,7 +14,7 @@
 
 <div class="container">
     <h1>Where would you like to travel to?</h1>
-    <form id="eraForm" action="dashboard.html" method="GET">
+    <form id="eraForm" action="{{ url_for('health_input_form') }}" method="GET">
 
         <!-- Choose Era with Image Buttons -->
         <div class="era-buttons">
@@ -42,5 +42,5 @@
     </form>
 </div>
 
-<script src="logic.js"></script> <!-- Link to your JavaScript file for logic -->
+<script src="{{ url_for('static', filename='logic.js') }}"></script> <!-- Link to your JavaScript file for logic -->
 {% endblock %}
