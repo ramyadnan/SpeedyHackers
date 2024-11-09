@@ -11,105 +11,115 @@
 
     <div class="container">
         <h1>Time Survival</h1>
-        <p id="eraDisplay"></p> 
-        <form id="healthForm" action="results.html" method="GET">
-            <!-- Basic Demographic Section -->
-            <section>
-                <h2>Personal Information</h2>
 
-                <label for="age">Age:</label>
-                <input type="number" id="age" name="age" min="0" max="150" required>
-                
-                <label for="gender">Gender:</label>
-                <select id="gender" name="gender" required>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
-                </select>
+        <!-- Display the selected era -->
+        <div id="eraDisplay">You are traveling to: <span id="eraName">[Selected Era]</span></div>
 
-                <label for="weight">Weight (kg):</label>
-                <input type="number" id="weight" name="weight" min="1" required>
+        <div class="content">
+            <!-- Form Section -->
+            <form id="healthForm" action="results.html" method="GET">
+                <!-- Basic Demographic Section -->
+                <section>
+                    <h2>Personal Information</h2>
 
-                <label for="height">Height (cm):</label>
-                <input type="number" id="height" name="height" min="1" max="250" required>
-            </section>
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" min="0" max="150" required>
+                    
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
 
-            <!-- Activity Level -->
-            <section>
-                <h2>Activity Level</h2>
-                <label for="activityLevel">Select your activity level:</label>
-                <select id="activityLevel" name="activityLevel" required>
-                    <option value="sedentary">Sedentary (little or no exercise)</option>
-                    <option value="light">Lightly Active (light exercise or sports 1-3 days/week)</option>
-                    <option value="moderate">Moderately Active (moderate exercise or sports 3-5 days/week)</option>
-                    <option value="veryActive">Very Active (hard exercise or sports 6-7 days/week)</option>
-                </select>
-            </section>
+                    <label for="weight">Weight (kg):</label>
+                    <input type="number" id="weight" name="weight" min="1" required>
 
-            <!-- Diet Information -->
-            <section>
-                <h2>Diet Information</h2>
-                <label for="diet">Diet Type:</label>
-                <select id="diet" name="diet" required>
-                    <option value="omnivore">Omnivore</option>
-                    <option value="vegetarian">Vegetarian</option>
-                    <option value="vegan">Vegan</option>
-                    <option value="other">Other</option>
-                </select>
+                    <label for="height">Height (cm):</label>
+                    <input type="number" id="height" name="height" min="1" max="250" required>
+                </section>
 
-                <label for="calories">Average Daily Caloric Intake (kcal):</label>
-                <input type="number" id="calories" name="calories" min="1000" max="5000">
+                <!-- Activity Level -->
+                <section>
+                    <h2>Activity Level</h2>
+                    <label for="activityLevel">Select your activity level:</label>
+                    <select id="activityLevel" name="activityLevel" required>
+                        <option value="sedentary">Sedentary (little or no exercise)</option>
+                        <option value="light">Lightly Active (light exercise or sports 1-3 days/week)</option>
+                        <option value="moderate">Moderately Active (moderate exercise or sports 3-5 days/week)</option>
+                        <option value="veryActive">Very Active (hard exercise or sports 6-7 days/week)</option>
+                    </select>
+                </section>
 
-                <label for="alcohol">Alcohol Consumption:</label>
-                <select id="alcohol" name="alcohol" required>
-                    <option value="never">Never</option>
-                    <option value="occasionally">Occasionally</option>
-                    <option value="frequently">Frequently</option>
-                    <option value="daily">Daily</option>
-                </select>
+                <!-- Diet Information -->
+                <section>
+                    <h2>Diet Information</h2>
+                    <label for="diet">Diet Type:</label>
+                    <select id="diet" name="diet" required>
+                        <option value="omnivore">Omnivore</option>
+                        <option value="vegetarian">Vegetarian</option>
+                        <option value="vegan">Vegan</option>
+                        <option value="other">Other</option>
+                    </select>
 
-                <label for="smoking">Do you smoke?</label>
-                <select id="smoking" name="smoking" required>
-                    <option value="no">No</option>
-                    <option value="yes">Yes</option>
-                </select>
-            </section>
+                    <label for="calories">Average Daily Caloric Intake (kcal):</label>
+                    <input type="number" id="calories" name="calories" min="1000" max="5000">
 
-            <!-- Health History Section -->
-            <section>
-                <h2>Health History</h2>
-                <label for="chronicConditions">Chronic Health Conditions (check all that apply):</label>
-                <div>
-                <input type="checkbox" id="diabetes" name="chronicConditions" value="diabetes">
-                    <label for="diabetes">Diabetes</label>
+                    <label for="alcohol">Alcohol Consumption:</label>
+                    <select id="alcohol" name="alcohol" required>
+                        <option value="never">Never</option>
+                        <option value="occasionally">Occasionally</option>
+                        <option value="frequently">Frequently</option>
+                        <option value="daily">Daily</option>
+                    </select>
 
-                    <input type="checkbox" id="hypertension" name="chronicConditions" value="hypertension">
-                    <label for="hypertension">Hypertension</label>
+                    <label for="smoking">Do you smoke?</label>
+                    <select id="smoking" name="smoking" required>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </section>
 
-                    <input type="checkbox" id="heartDisease" name="chronicConditions" value="heartDisease">
-                    <label for="heartDisease">Heart Disease</label>
-                </div>
+                <!-- Health History Section -->
+                <section>
+                    <h2>Health History</h2>
+                    <label for="chronicConditions">Chronic Health Conditions (check all that apply):</label>
+                    <div>
+                        <input type="checkbox" id="diabetes" name="chronicConditions" value="diabetes">
+                        <label for="diabetes">Diabetes</label>
 
-                <label for="medications">Current Medications (if any):</label>
-                <textarea id="medications" name="medications"></textarea>
-            </section>
+                        <input type="checkbox" id="hypertension" name="chronicConditions" value="hypertension">
+                        <label for="hypertension">Hypertension</label>
 
-            <!-- Stress and Sleep -->
-            <section>
-                <h2>Lifestyle Factors</h2>
-                <label for="sleepHours">Average Sleep (hours per night):</label>
-                <input type="number" id="sleepHours" name="sleepHours" min="4" max="12" required>
+                        <input type="checkbox" id="heartDisease" name="chronicConditions" value="heartDisease">
+                        <label for="heartDisease">Heart Disease</label>
+                    </div>
+                </section>
 
-                <label for="stressLevel">Stress Level (1 - Low to 5 - High):</label>
-                <input type="range" id="stressLevel" name="stressLevel" min="1" max="5" required>
-            </section>
+                <!-- Stress and Sleep -->
+                <section>
+                    <h2>Lifestyle Factors</h2>
+                    <label for="sleepHours">Average Sleep (hours per night):</label>
+                    <input type="number" id="sleepHours" name="sleepHours" min="4" max="12" required>
 
-            <!-- Submit Button -->
-            <section>
-                <button type="submit">Will I Survive ?</button>
-            </section>
-        </form>
+                    <label for="stressLevel">Stress Level (1 - Low to 5 - High):</label>
+                    <input type="range" id="stressLevel" name="stressLevel" min="1" max="5" required>
+                </section>
+
+                <!-- Submit Button -->
+                <section>
+                    <button type="submit">Will I Survive?</button>
+                </section>
+            </form>
+
+            <!-- Information Section with Image -->
+            <div class="info">
+                <p id="era-description">Learn more about how your lifestyle might have affected your health in this era.</p>
+                <img id="era-image" src="" alt="Era Image">
+            </div>
+        </div>
     </div>
-    <!-- <script src="logic.js"></script> Link to your JavaScript file for logicre -->
+
+    <script src="logic.js"></script>
 </body>
 </html>
