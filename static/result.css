@@ -8,7 +8,7 @@
 
 /* Container styling */
 .container {
-    max-width: 600px;
+    max-width: 500px;
     margin: 50px auto;
     padding: 20px;
     background-color: #f9f9f9;
@@ -17,54 +17,52 @@
     text-align: center;
 }
 
+p{
+    font-size: 1.5em;
+    color: #666;
+    margin-top: 20px;
+}
+
+h3{
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.back-button {
+    display: inline-block;
+    position: absolute;
+    left: 45%;
+    margin-top: 30px;
+    color: #007BFF;
+    text-decoration: none;
+    font-size: 1.1em;
+}
 /* Title styling */
 .container h1 {
     font-size: 2em;
     color: #333;
-    margin-bottom: 20px;
 }
 
 /* Life expectancy result */
 #life-expectancy {
     font-size: 2.5em;
     font-weight: bold;
-    color: #4CAF50;
+    color: #000000;
 }
 
 #category {
     display: block;
-    margin-top: 10px;
+    margin-top: 0px;
     font-size: 1.5em;
     color: #666;
+    text-shadow: 2px 2px 2px #d0cccc;
 }
 
-/* Category styling */
+/* Category styling */sa
 #category-description {
-    font-size: 1.2em;
     margin-top: 20px;
     color: #555;
     line-height: 1.5;
-}
-
-/* Category-specific colors */
-.critical {
-    color: #D32F2F; /* Red for critical category */
-}
-
-.suboptimal {
-    color: #F57C00; /* Orange for suboptimal category */
-}
-
-.stable {
-    color: #1976D2; /* Blue for stable category */
-}
-
-.vibrant {
-    color: #388E3C; /* Green for vibrant category */
-}
-
-.timeless {
-    color: #512DA8; /* Purple for timeless category */
 }
 
 /* Category image */
@@ -73,8 +71,9 @@
 }
 
 #category-image {
-    max-width: 80%;
+    max-width: 200px;
     height: auto;
+    padding: 10px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
@@ -92,43 +91,4 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Share container styling */
-.share-container {
-    margin-top: 30px;
-    text-align: center;
-}
 
-.share-container h3 {
-    font-size: 1.2em;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-/* Share button styling */
-.share-button {
-    display: inline-block;
-    padding: 10px 15px;
-    margin: 5px;
-    border-radius: 5px;
-    color: white;
-    text-decoration: none;
-    font-size: 1em;
-    transition: background 0.3s;
-}
-
-/* Individual button colors */
-.share-button.facebook {
-    background-color: #3b5998;
-}
-
-.share-button.twitter {
-    background-color: #1da1f2;
-}
-
-.share-button.linkedin {
-    background-color: #0077b5;
-}
-
-.share-button:hover {
-    opacity: 0.8;
-}
