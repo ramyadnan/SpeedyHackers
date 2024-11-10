@@ -23,30 +23,32 @@
     <div class="container">
         <h1>Time Survival</h1>
         <p id="eraDisplay">Selected Era: <span id="eraName"></span></p> 
+        <div class="content">
         <form id="healthForm" action="{{ url_for('process_form') }}" method="POST">
             <input type="hidden" name="eraDisplay" value="{{ era }}">
             
             <!-- Basic Demographic Section -->
             <section>
+                <br>
                 <h2>Personal Information</h2>
 
                 <label for="age">Age:</label>
                 <input type="number" id="age" name="age" min="0" max="150" required>
-                
+                <br>
                 <label for="gender">Gender:</label>
                 <select id="gender" name="gender" required>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="other">Other</option>
                 </select>
-
+<br>
                 <label for="weight">Weight (kg):</label>
                 <input type="number" id="weight" name="weight" min="1" required>
-
+<br>
                 <label for="height">Height (cm):</label>
                 <input type="number" id="height" name="height" min="1" max="250" required>
             </section>
-
+<br>
             <!-- Activity Level -->
             <section>
                 <h2>Activity Level</h2>
@@ -58,7 +60,7 @@
                     <option value="veryActive">Very Active (hard exercise or sports 6-7 days/week)</option>
                 </select>
             </section>
-
+<br>
             <!-- Diet Information -->
             <section>
                 <h2>Diet Information</h2>
@@ -69,10 +71,10 @@
                     <option value="vegan">Vegan</option>
                     <option value="other">Other</option>
                 </select>
-
+<br>
                 <label for="calories">Average Daily Caloric Intake (kcal):</label>
                 <input type="number" id="calories" name="calories" min="1000" max="5000">
-
+<br>
                 <label for="alcohol">Alcohol Consumption:</label>
                 <select id="alcohol" name="alcohol" required>
                     <option value="never">Never</option>
@@ -80,14 +82,14 @@
                     <option value="frequently">Frequently</option>
                     <option value="daily">Daily</option>
                 </select>
-
+<br>
                 <label for="smoking">Do you smoke?</label>
                 <select id="smoking" name="smoking" required>
                     <option value="no">No</option>
                     <option value="yes">Yes</option>
                 </select>
             </section>
-
+<br>
             <!-- Health History Section -->
             <section>
                 <h2>Health History</h2>
@@ -106,23 +108,31 @@
                 <label for="illness">Current Illness (if any):</label>
                 <textarea id="illness" name="illness"></textarea>
             </section>
-
+<br>
             <!-- Stress and Sleep -->
             <section>
                 <h2>Lifestyle Factors</h2>
                 <label for="sleepHours">Average Sleep (hours per night):</label>
                 <input type="number" id="sleepHours" name="sleepHours" min="4" max="12" required>
-
+<br>
                 <label for="stressLevel">Stress Level (1 - Low to 5 - High):</label>
                 <input type="range" id="stressLevel" name="stressLevel" min="1" max="5" required>
             </section>
-
+<br>
             <!-- Submit Button -->
             <section>
                 <button type="submit">Will I Survive ?</button>
             </section>
         </form>
     </div>
+        
+        <div>
+            <img src="static/images/egyptian_doctor.png"  width="500vw" style="display: flex, justify-content: space-between;" > 
+        </div>
+
+    </div>
+
+  
 
     <script>
         const selectedEra = "{{ era }}";
