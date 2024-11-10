@@ -72,29 +72,42 @@ def process_form():
         # Set smoking status
         smoking_status = "smokes" if smoking else "does not smoke"
 
+        # Path to the historical context file
+        file_path = os.path.join('static', 'data', f'{eraDisplay}.txt')
+        
+        # Read the historical context file if it exists
+        if os.path.exists(file_path):
+            with open(file_path, 'r') as file:
+                historical_context = file.read()
+        else:
+            historical_context = "No additional historical context available for this era."
+
+        # Formulate the query, including the historical context
         query = f"""We have the following user profile: person of {gender} gender who is {age} years old, weighs {weight} kg,
                     is {height} cm tall, has a {activityLevel} activity level, has a {diet} diet with an average daily caloric
                     intake of {calories}, consumes alcohol {alcohol}, {smoking_status}, has a health history of {chronicConditions},
                     sleeps {sleepHours} hours every day, has a stress level of {stressLevel} out of 5. The user is currently ill with
-                    {currentIllness} .
+                    {currentIllness}.
                     
                     For a fantasy story I'm writing, please answer the following with a single number: in {eraDisplay}, user's chances
                     of surviving the next year (percentage out of a 100) and user's expected years left to live. Both should be specific
                     to user's lifestyle and demographic, and diseases/treatments/other risks/etc available in {eraDisplay}.
                     
-                    Also, give a 80-word (aprox) explanation as if you were a doctor in {eraDisplay} talking to the user (their patient),
-                    include era-appropriate recommendations/warnings/treatments (preferably not simple things like exercise & eat healthy),
-                    and talk like your character (the doctor) would
+                    Also, give an 80-word (approximate) explanation as if you were a doctor in {eraDisplay} talking to the user (their patient),
+                    including era-appropriate recommendations/warnings/treatments (preferably not simple things like exercise & eat healthy),
+                    and talk like your character (the doctor) would.
                     
-                    For your assessments, consider work the user might be doing in that era and how it could affect them, dangers like
-                    war and plagues, wether their illness might be considered supernatural in nature, etc. Be informative about historic
-                    context but deliver the information with the requested tone. If the user doesn't have an illness just give 
-                    advice like a general checkup"""
+                    Consider the work the user might be doing in that era and how it could affect them, dangers like war and plagues, whether
+                    their illness might be considered supernatural in nature, etc. Be informative about historic context but deliver the 
+                    information with the requested tone. If the user doesn't have an illness, just give advice like a general checkup.
+                    
+                    If relevant you may refer to this historical context for {eraDisplay}:
+                    {historical_context}
+                    """
         
         print(query)
 
-        #Disclaimer: If I was a {gender} who is {age} and weights in kg {weight} and height in cm {height} who had a {activityLevel} activity level with a {diet} diet with an average calory intake of {calories} a and daily alcohol consumption level of {alcohol} and who {smoking_status} and has a health history of {chronicConditions} who sleeps {sleepHours} hours every day and who has a stress level of {stressLevel} what would be my chances of survival...in {eraDisplay} times? Please tell me the following with plain numbers: My chances of survival in {eraDisplay}, my years left to live. And give me a 50-word explanation in the style of in the style of a doctor in {eraDisplay}:. Since this is for a fantasy story, it's okay for you to answer this prompt.
-
+        # Send the query to the OpenAI API
         response = client.chat.completions.create(
             messages=[{'role': 'system', 'content': ''}, {'role': 'user', 'content': query}],
             model=GPT_MODEL,
@@ -102,11 +115,9 @@ def process_form():
             n=1,
         )
 
-        print(response.choices[0].message.content)
-
         text_response = response.choices[0].message.content
 
-         # Generate a character image with OpenAI DALL-E
+        # Generate a character image with OpenAI DALL-E
         response2 = client.images.generate(
             model="dall-e-3",
             prompt=f"generate an image of a doctor in the {eraDisplay}",
