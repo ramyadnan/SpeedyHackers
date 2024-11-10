@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time Survival</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
     <nav class="navbar">
         <div class="navbar-container">
             <div class="navbar-menu">
-                <a href="{{ url_for('index') }}" class="nav-item">Home</a>
+                <a href="{{ url_for('index') }}" class="nav-item">Home</a> 
                 <a href="{{ url_for('era') }}" class="nav-item">Era Selection</a>
                 <a href="{{ url_for('about') }}" class="nav-item">About</a>
-
             </div>
         </div>
     </nav>
@@ -24,32 +21,36 @@
 
     <div class="container">
         <h1>Time Survival</h1>
-        <p id="eraDisplay">Selected Era: <span id="eraName"></span></p>
-        <form id="healthForm" action="{{ url_for('process_form') }}" method="POST">
-            <input type="hidden" name="eraDisplay" value="{{ era }}">
+        <p id="eraDisplay">Selected Era: <span id="eraName"></span></p> 
 
-            <!-- Basic Demographic Section -->
-            <section>
-                <h2>Personal Information</h2>
+        <!-- Flex container for form and image -->
+        <div class="flex-container">
+            <!-- Form Section -->
+            <form id="healthForm" action="{{ url_for('process_form') }}" method="POST">
+                <input type="hidden" name="eraDisplay" value="{{ era }}">
 
-                <label for="age">Age:</label>
-                <input type="number" id="age" name="age" min="0" max="150" required>
+                <!-- Basic Demographic Section -->
+                <section>
+                    <h2>Personal Information</h2>
 
-                <label for="gender">Gender:</label>
-                <select id="gender" name="gender" required>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
-                </select>
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" min="0" max="150" required>
 
-                <label for="weight">Weight (kg):</label>
-                <input type="number" id="weight" name="weight" min="1" required>
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
 
-                <label for="height">Height (cm):</label>
-                <input type="number" id="height" name="height" min="1" max="250" required>
-            </section>
+                    <label for="weight">Weight (kg):</label>
+                    <input type="number" id="weight" name="weight" min="1" required>
 
-            <!-- Activity Level -->
+                    <label for="height">Height (cm):</label>
+                    <input type="number" id="height" name="height" min="1" max="250" required>
+                </section>
+
+                <!-- Activity Level -->
             <section>
                 <h2>Activity Level</h2>
                 <label for="activityLevel">Select your activity level:</label>
@@ -95,7 +96,7 @@
                 <h2>Health History</h2>
                 <label for="chronicConditions">Chronic Health Conditions (check all that apply):</label>
                 <div>
-                    <input type="checkbox" id="diabetes" name="chronicConditions" value="diabetes">
+                <input type="checkbox" id="diabetes" name="chronicConditions" value="diabetes">
                     <label for="diabetes">Diabetes</label>
 
                     <input type="checkbox" id="hypertension" name="chronicConditions" value="hypertension">
@@ -119,17 +120,58 @@
                 <input type="range" id="stressLevel" name="stressLevel" min="1" max="5" required>
             </section>
 
-            <!-- Submit Button -->
-            <section>
-                <button type="submit">Will I Survive ?</button>
-            </section>
-        </form>
+                <!-- Submit Button -->
+                <section>
+                    <button type="submit">Will I Survive?</button>
+                </section>
+            </form>
+
+            <!-- Image Section -->
+            <div class="info">
+                <p id="era-description">Learn more about how your lifestyle might have affected your health in this era.</p>
+                <img id="era-image" src="" alt="Era Image">
+            </div>
+        </div>
     </div>
 
     <script>
+
         const selectedEra = "{{ era }}";
+        console.log(`Selected Era: ${selectedEra}`);
+                const eraData = {
+            "egypt": {
+                description: "Greetings, I am Ahmose, healer of the Nile. I will be guiding your path to balance and strength. Tell me, where is the pain troubling your spirit?",
+                image: "../static/images/egypt.jpg"
+            },
+            "medieval": {
+                description: "Greetings, I am Master Guillaume, a physician of the pestilence. I am here to observe your condition and offer what remedies I may. Now, tell me—where does the sickness trouble you?",
+                image: "../static/images/medieval.jpg"
+            },
+            "world-war": {
+                description: "Hello, I’m Dr. Margaret Harlow. I’ll be looking after you today. The times are challenging, but we’ll get you back on your feet. How are you feeling?",
+                image: "../static/images/world-war.jpg"
+            },
+            "present-day": {
+                description: "Hi, I’m Dr. Mark Cohen, and I’ll be your doctor today. Let’s discuss what’s brought you in and get you feeling better soon.",
+                image: "../static/images/present-day.jpg"
+            }
+        };
+        // Retrieve elements
+        const descriptionElement = document.getElementById("era-description");
+        const imgElement = document.getElementById("era-image");
+
+        // Set default description and image based on the selected era
+        if (eraData[selectedEra]) {
+            descriptionElement.textContent = eraData[selectedEra].description;
+            imgElement.src = eraData[selectedEra].image;
+        } else {
+            descriptionElement.textContent = "Unknown era. Information not available.";
+            imgElement.src = "../static/images/default.jpg"; // Fallback image
+        }
+                // const imgElement = document.getElementById("era-image");
+                // imgElement.src = `../static/images/${selectedEra}.jpg`;
     </script>
     <script src="{{ url_for('static', filename='eras.js') }}"></script>
 </body>
-
 </html>
+

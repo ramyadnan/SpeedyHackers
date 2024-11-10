@@ -40,19 +40,23 @@ const eraInfo = {
     "world-war": {
         name: "World War Times",
         description: "Health during the world wars was affected by scarcity, stress, and wartime injuries.",
-        imageUrl: "images/world-war.jpg"
+        imageUrl: "images/war.jpg"
     },
     "present-day": {
         name: "Present Day",
         description: "Modern medicine has greatly increased life expectancy compared to the past.",
-        imageUrl: "images/present-day.jpg"
+        imageUrl: "images/present.jpg"
     }
 };
 
 // Display era information if a known era is selected
 if (selectedEra && eraInfo[selectedEra]) {
-    document.getElementById("eraName").textContent = eraInfo[selectedEra].name;
-    document.getElementById("eraDisplayInput").value = eraInfo[selectedEra].name; // Update hidden input value
+    // Display the era name
+    const eraName = eraInfo[selectedEra].name;
+
+    document.getElementById("eraName").textContent = eraName;
+    document.getElementById("eraDisplayInput").value = eraName; // Update hidden input value
+    
 } else {
     document.getElementById("eraName").textContent = "Unknown Era";
 }

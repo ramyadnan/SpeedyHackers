@@ -9,3 +9,4 @@ window.onload = function () {
         document.getElementById('eraDisplay').innerText = `You chose: ${selectedEra}`;
     }
 };
+

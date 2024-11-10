@@ -301,8 +301,7 @@ def process_form():
                     If relevant you may refer to this historical context for {eraDisplay}:
                     {historical_context}
                     """
-        
-        print(query)
+    
 
         # Send the query to the OpenAI API
         response = client.chat.completions.create(

@@ -110,13 +110,6 @@ form {
     gap: 15px;
 }
 
-/* Info section styling */
-.info {
-    width: 45%;
-    /* Adjust width as needed */
-    text-align: left;
-}
-
 #era-description {
     font-size: 1.5vw;
     margin-bottom: 10px;
@@ -209,11 +202,11 @@ form {
 }
 
 #world-war .era-background {
-    background-image: url('images/world-war.jpg');
+    background-image: url('images/war.jpg');
 }
 
 #present-day .era-background {
-    background-image: url('images/present-day.jpg');
+    background-image: url('images/present.jpg');
 }
 
 /* Style for the era label */
@@ -234,4 +227,30 @@ form {
 .era:hover .era-label {
     transform: scale(1.1);
     /* Slightly scale text on hover */
+}
+
+/* Flex container for form and image */
+.flex-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+#healthForm {
+    flex: 1;
+    max-width: 60%;
+}
+
+.info {
+    flex: 0.4;
+    max-width: 35%;
+}
+
+.info img {
+    width: 80%; /* or specify an exact size, like 200px */
+    max-width: 300px; /* Limit the image width */
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto; /* Center the image if smaller */
 }
