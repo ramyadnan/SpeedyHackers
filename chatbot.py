@@ -27,8 +27,16 @@ def show_era_selection():
 
 @app.route('/health-input', methods=['GET'])
 def show_form():
-    era = request.args.get('era', 'medieval')  # Default to 'medieval' if not provided
-    return render_template('health-input-form.html', era=era)
+    # Retrieve the 'era' query parameter from the URL
+    era = request.args.get('era')
+    if era:
+        # Pass the 'era' variable to the template
+        return render_template('health-input-form.html', era=era)
+    else:
+        # If no era is selected, redirect to a default or handle it
+        return "Era not specified", 400  # Or render a specific error page
+
+
 
 @app.route('/process', methods=['POST']) 
 def process_form():

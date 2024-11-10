@@ -1,6 +1,4 @@
-function Calculate(){
-    document.write(document.getElementById("age").value)
-}
+
 
 //window.onload = function() {
 //    const urlParams = new URLSearchParams(window.location.search);
@@ -13,27 +11,28 @@ function Calculate(){
 
 window.onload = function() {
     const eras = document.querySelectorAll('.era');
-
     // Add click event to each era section
     eras.forEach(era => {
         era.addEventListener('click', function() {
             const selectedEra = era.getAttribute('data-era');
-            // Redirect to the next page with the selected era
-            window.location.href = `health-input-form.html?era=${selectedEra}`;
+            
+            window.location.href =`/health-input?era=${selectedEra}`;  // Flask route handling the era param
         });
     });
 };
 
+
 // script.js
 
 // Era display mappings
+
 const eraInfo = {
-    egypt: {
+    "egypt": {
         name: "Ancient Egypt",
         description: "In Ancient Egypt, life expectancy was influenced by diet, climate, and access to medicine.",
         imageUrl: "images/ancient-egypt.jpg"
     },
-    medieval: {
+    "medieval": {
         name: "Medieval Europe",
         description: "Medieval Europe was marked by plagues and limited medical knowledge, affecting longevity.",
         imageUrl: "images/medieval-europe.jpg"

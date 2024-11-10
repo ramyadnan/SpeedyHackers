@@ -11,13 +11,16 @@
 
     <div class="container">
         <h1>Your Survival Prediction</h1>
-        
-        <!-- Display the response text -->
-        <p>{{ text_response | safe }}</p>
-        
-        <!-- Display the generated image -->
-        <img src="{{ image_url }}" alt="Doctor Image" style="width: 100%; max-width: 500px;">
 
+        <!-- Flexbox layout for content area -->
+        <div class="content">
+            <div class="info">
+                <p>{{ text_response | safe }}</p>
+            </div>
+            <div class="info">
+                <img id="era-image" src="{{ image_url }}" alt="Doctor Image">
+            </div>
+        </div>
     </div>
 
 </body>

@@ -10,33 +10,31 @@
 
     <div class="container">
         <h1>Where would you like to travel to?</h1>
-        <form id="eraForm" action="{{ url_for('show_form') }}" method="GET">
+        <!--<form id="eraForm" action="{{ url_for('show_form') }}" method="GET"> -->
             
             <!-- Choose Era with Image Buttons -->
-            <div class="era-buttons">
-                <button type="submit" name="era" value="egypt" class="era-button">
-                    <img src="{{ url_for('static', filename='images/ancient-egypt.jpg') }}" alt="Ancient Egypt" class="era-image">
-                    <p>Ancient Egypt</p>
-                </button>
-
-                <button type="submit" name="era" value="medieval" class="era-button">
-                    <img src="{{ url_for('static', filename='images/medieval-europe.jpg') }}" alt="Medieval Europe" class="era-image">
-                    <p>Medieval Europe</p>
-                </button>
-
-                <button type="submit" name="era" value="world-war" class="era-button">
-                    <img src="{{ url_for('static', filename='images/world-war.jpg') }}" alt="World War Times" class="era-image">
-                    <p>World War Times</p>
-                </button>
-
-                <button type="submit" name="era" value="present-day" class="era-button">
-                    <img src="{{ url_for('static', filename='images/present-day.jpg') }}" alt="Present Day" class="era-image">
-                    <p>Present Day</p>
-                </button>
+            <div class="era-selections">
+                
+                <div class="era" id="egypt" data-era="egypt">
+                    <div class="era-background"></div>
+                    <div class="era-label">Ancient Egypt</div>
+                </div>
+                <div class="era" id="medieval" data-era="medieval">
+                    <div class="era-background"></div>
+                    <div class="era-label">Medieval Europe</div>
+                </div>
+                <div class="era" id="world-war" data-era="world-war">
+                    <div class="era-background"></div>
+                    <div class="era-label">World War Times</div>
+                </div>
+                <div class="era" id="present-day" data-era="present-day">
+                    <div class="era-background"></div>
+                    <div class="era-label">Present Day</div>
+                </div>
             </div>
             
-        </form>
+        <!--</form>-->
     </div>
-    <script src="{{ url_for('static', filename='logic.js') }}"></script>
+    <script src="{{ url_for('static', filename='eras.js') }}"></script>
 </body>
 </html>
