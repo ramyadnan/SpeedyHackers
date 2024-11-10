@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title class = "text-align: center">Time Travel</title>
+    <title class="text-align: center">Time Travel</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-      
+
     <nav class="navbar">
         <div class="navbar-container">
             <div class="navbar-menu">
-                 <a href="{{ url_for('era') }}" class="nav-item">Era Selection</a> 
-                <a href="{{ url_for('about') }}" class="nav-item">About</a>                
+                <a href="{{ url_for('era') }}" class="nav-item">Era Selection</a>
+                <a href="{{ url_for('about') }}" class="nav-item">About</a>
             </div>
         </div>
     </nav>
@@ -18,18 +20,18 @@
 </head>
 
 <body>
-<br>
-<div class="index-container" style="text-align: center">
-    <h2>Time Travel Home Page</h2> <br><br>
-    <h3>Instructions:</h3>
-    <p>Please click on "Era Selection" in the menu to start your time travel! </p>
-    <p>If you prefer to learn more about this project first, go to the "About" section.</p>
-<br><br>
-<div style="color: #D9544D">
-    <h3>Disclaimer:</h3>
-    <p>Please read the "About" page to learn about the aim of this website and the technologies used.</p>
-    <p>Please remember that the recommendations given by this agent are not to be taken as medical advice.</p>
-    <p>This website is just for educational purposes on the history of medical innovations.</p>
-</div>
-</div>
+    <br>
+    <div class="index-container" style="text-align: center">
+        <h2>Time Travel Home Page</h2> <br><br>
+        <h3>Instructions:</h3>
+        <p>Please click on "Era Selection" in the menu to start your time travel! </p>
+        <p>If you prefer to learn more about this project first, go to the "About" section.</p>
+        <br><br>
+        <div style="color: #D9544D">
+            <h3>Disclaimer:</h3>
+            <p>Please read the "About" page to learn about the aim of this website and the technologies used.</p>
+            <p>Please remember that the recommendations given by this agent are not to be taken as medical advice.</p>
+            <p>This website is just for educational purposes on the history of medical innovations.</p>
+        </div>
+    </div>
 </body>

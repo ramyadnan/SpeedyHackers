@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time Survival</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
     <nav class="navbar">
         <div class="navbar-container">
             <div class="navbar-menu">
-                 <a href="{{ url_for('index') }}" class="nav-item">Home</a> 
-                 <a href="{{ url_for('era') }}" class="nav-item">Era Selection</a>
+                <a href="{{ url_for('index') }}" class="nav-item">Home</a>
+                <a href="{{ url_for('era') }}" class="nav-item">Era Selection</a>
                 <a href="{{ url_for('about') }}" class="nav-item">About</a>
-                
+
             </div>
         </div>
     </nav>
@@ -22,17 +24,17 @@
 
     <div class="container">
         <h1>Time Survival</h1>
-        <p id="eraDisplay">Selected Era: <span id="eraName"></span></p> 
+        <p id="eraDisplay">Selected Era: <span id="eraName"></span></p>
         <form id="healthForm" action="{{ url_for('process_form') }}" method="POST">
             <input type="hidden" name="eraDisplay" value="{{ era }}">
-            
+
             <!-- Basic Demographic Section -->
             <section>
                 <h2>Personal Information</h2>
 
                 <label for="age">Age:</label>
                 <input type="number" id="age" name="age" min="0" max="150" required>
-                
+
                 <label for="gender">Gender:</label>
                 <select id="gender" name="gender" required>
                     <option value="male">Male</option>
@@ -93,7 +95,7 @@
                 <h2>Health History</h2>
                 <label for="chronicConditions">Chronic Health Conditions (check all that apply):</label>
                 <div>
-                <input type="checkbox" id="diabetes" name="chronicConditions" value="diabetes">
+                    <input type="checkbox" id="diabetes" name="chronicConditions" value="diabetes">
                     <label for="diabetes">Diabetes</label>
 
                     <input type="checkbox" id="hypertension" name="chronicConditions" value="hypertension">
@@ -129,4 +131,5 @@
     </script>
     <script src="{{ url_for('static', filename='eras.js') }}"></script>
 </body>
+
 </html>
