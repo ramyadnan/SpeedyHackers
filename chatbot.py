@@ -60,7 +60,7 @@ with app.app_context():
 EMBEDDING_MODEL = "text-embedding-ada-002"
 GPT_MODEL = "gpt-4o-mini"
 
-client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", "sk-svcacct-cNpEjHaToqE8f1_oq5mtOav-MW58kAAPPnY2lzO3W3FdX1lTM4-B88AF-DU36xuVT3BlbkFJiYStWmktQpsH4HTId447QBQGCh4jmzqdiyzaD-Lk-hudqrQbinAEXD8tlcRAO9kA"))
+client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
 
 @app.route('/')
