@@ -7,7 +7,7 @@ import os # for getting API token from env variable OPENAI_API_KEY
 from scipy import spatial  # for calculating vector similarities for search
 
 import urllib.request 
-from PIL import Image
+# from PIL import Image
 
 from flask import Flask, request, render_template, jsonify
 
