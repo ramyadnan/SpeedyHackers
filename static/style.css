@@ -54,7 +54,7 @@ form {
 
 #era-image {
     width: 100%;
-    max-width: 300px;
+    max-width: 400px;
     height: auto;
     border-radius: 5px;
 }
@@ -72,12 +72,34 @@ form {
 
 
 /* Flexbox for splitting screen into 4 equal parts */
-.era-selections {
+
+.era-buttons {
     display: flex;
-    justify-content: space-between;
-    height: 80vh;
+    justify-content: center;  /* Center the buttons in the row */
+    align-items: center;      /* Vertically center the buttons */
+    gap: 20px;                /* Space between buttons */
+    width: 200%;               /* Take 80% of the screen width */
+}
+
+.era-button {
+    display: flex;
+    flex-direction: column;   /* Stack image and text vertically */
+    width: 500px;             /* Set a fixed width */
+    height: 250px;            /* Set a fixed height */
+    padding: 10px;            /* Padding around the content */
+    border: 2px solid #ddd;   /* Optional: Add a border to the buttons */
+    border-radius: 10px;      /* Optional: Round the corners of the buttons */
+    background-color: #f8f8f8; /* Optional: Set background color */
+    cursor: pointer;         /* Show pointer cursor on hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add smooth hover effect */
+}
+
+/* Make the images fill their container and maintain aspect ratio */
+.era-image {
     width: 100%;
-    margin-top: 20px;
+    height: 100%;
+    object-fit: cover;        /* Ensure the image covers the button area */
+    margin-bottom: 10px;      /* Add space between the image and text */
 }
 
 /* Style each era section */
