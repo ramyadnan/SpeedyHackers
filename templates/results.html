@@ -2,15 +2,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Survival Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Survival Prediction</h1>
-    <p>{{ text_response }}</p>
-    <img src="{{ image_url }}" alt="Doctor Image">
+
+    <div class="container">
+        <h1>Your Survival Prediction</h1>
+        
+        <!-- Display the response text -->
+        <p>{{ text_response | safe }}</p>
+        
+        <!-- Display the generated image -->
+        <img src="{{ image_url }}" alt="Doctor Image" style="width: 100%; max-width: 500px;">
+
+    </div>
+
 </body>
 </html>
+
 
 <!--<!DOCTYPE html>
 <html lang="en">

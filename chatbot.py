@@ -60,12 +60,11 @@ def process_form():
             n=1,
         )
 
-        # Access the content safely
         print(response.choices[0].message.content)
 
         text_response = response.choices[0].message.content
 
-        # Generate a character image with OpenAI DALL-E
+         # Generate a character image with OpenAI DALL-E
         response2 = client.images.generate(
             model="dall-e-3",
             prompt="a medieval doctor",
@@ -76,11 +75,8 @@ def process_form():
 
         image_url = response2.data[0].url
 
-        # Return both text and image URL as JSON
-        return jsonify({
-            'text_response': text_response,
-            'image_url': image_url
-        })
+        # Render `results.html` with `text_response` and `image_url`
+        return render_template('results.html', text_response=text_response, image_url=image_url)
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
