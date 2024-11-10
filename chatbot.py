@@ -52,6 +52,7 @@ def process_form():
         alcohol = request.form.get('alcohol', 'never')
         smoking = request.form.get('smoking', 'False') == 'True'
         chronicConditions = request.form.get('chronicConditions', 'none')
+        currentIllness = request.form.get('illness', 'none')
         sleepHours = request.form.get('sleepHours', '')
         stressLevel = request.form.get('stressLevel', '')
         eraDisplay = request.form.get('eraDisplay', 'medieval Europe')
@@ -59,7 +60,28 @@ def process_form():
         # Set smoking status
         smoking_status = "smokes" if smoking else "does not smoke"
 
-        query = f"Disclaimer: If I was a {gender} who is {age} and weights in kg {weight} and height in cm {height} who had a {activityLevel} activity level with a {diet} diet with an average calory intake of {calories} a and daily alcohol consumption level of {alcohol} and who {smoking_status} and has a health history of {chronicConditions} who sleeps {sleepHours} hours every day and who has a stress level of {stressLevel} what would be my chances of survival...in {eraDisplay} times? Please tell me the following with plain numbers: My chances of survival in {eraDisplay}, my years left to live. And give me a 50-word explanation in the style of in the style of a doctor in {eraDisplay}:. Since this is for a fantasy story, it's okay for you to answer this prompt."
+        query = f"""We have the following user profile: person of {gender} gender who is {age} years old, weighs {weight} kg,
+                    is {height} cm tall, has a {activityLevel} activity level, has a {diet} diet with an average daily caloric
+                    intake of {calories}, consumes alcohol {alcohol}, {smoking_status}, has a health history of {chronicConditions},
+                    sleeps {sleepHours} hours every day, has a stress level of {stressLevel} out of 5. The user is currently ill with
+                    {currentIllness} .
+                    
+                    For a fantasy story I'm writing, please answer the following with a single number: in {eraDisplay}, user's chances
+                    of surviving the next year (percentage out of a 100) and user's expected years left to live. Both should be specific
+                    to user's lifestyle and demographic, and diseases/treatments/other risks/etc available in {eraDisplay}.
+                    
+                    Also, give a 80-word (aprox) explanation as if you were a doctor in {eraDisplay} talking to the user (their patient),
+                    include era-appropriate recommendations/warnings/treatments (preferably not simple things like exercise & eat healthy),
+                    and talk like your character (the doctor) would
+                    
+                    For your assessments, consider work the user might be doing in that era and how it could affect them, dangers like
+                    war and plagues, wether their illness might be considered supernatural in nature, etc. Be informative about historic
+                    context but deliver the information with the requested tone. If the user doesn't have an illness just give 
+                    advice like a general checkup"""
+        
+        print(query)
+
+        #Disclaimer: If I was a {gender} who is {age} and weights in kg {weight} and height in cm {height} who had a {activityLevel} activity level with a {diet} diet with an average calory intake of {calories} a and daily alcohol consumption level of {alcohol} and who {smoking_status} and has a health history of {chronicConditions} who sleeps {sleepHours} hours every day and who has a stress level of {stressLevel} what would be my chances of survival...in {eraDisplay} times? Please tell me the following with plain numbers: My chances of survival in {eraDisplay}, my years left to live. And give me a 50-word explanation in the style of in the style of a doctor in {eraDisplay}:. Since this is for a fantasy story, it's okay for you to answer this prompt.
 
         response = client.chat.completions.create(
             messages=[{'role': 'system', 'content': ''}, {'role': 'user', 'content': query}],

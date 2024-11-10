@@ -11,7 +11,7 @@
 
     <div class="container">
         <h1>Time Survival</h1>
-        <p id="eraDisplay">Selected Era: {{ era | capitalize }}</p> 
+        <p id="eraDisplay">Selected Era: <span id="eraName"></span></p> 
         <form id="healthForm" action="{{ url_for('process_form') }}" method="POST">
             <input type="hidden" name="eraDisplay" value="{{ era }}">
             
@@ -92,8 +92,8 @@
                     <label for="heartDisease">Heart Disease</label>
                 </div>
 
-                <label for="medications">Current Medications (if any):</label>
-                <textarea id="medications" name="medications"></textarea>
+                <label for="illness">Current Illness (if any):</label>
+                <textarea id="illness" name="illness"></textarea>
             </section>
 
             <!-- Stress and Sleep -->
@@ -113,6 +113,9 @@
         </form>
     </div>
 
-    <script src="{{ url_for('static', filename='logic.js') }}"></script>
+    <script>
+        const selectedEra = "{{ era }}";
+    </script>
+    <script src="{{ url_for('static', filename='eras.js') }}"></script>
 </body>
 </html>

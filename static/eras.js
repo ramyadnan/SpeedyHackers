@@ -49,18 +49,11 @@ const eraInfo = {
     }
 };
 
-// Get the selected era from the URL query parameters
-const params = new URLSearchParams(window.location.search);
-const selectedEra = params.get("era");
-
-// Display era information if it matches a known era
+// Display era information if a known era is selected
 if (selectedEra && eraInfo[selectedEra]) {
     document.getElementById("eraName").textContent = eraInfo[selectedEra].name;
-    document.getElementById("era-description").textContent = eraInfo[selectedEra].description;
-    document.getElementById("era-image").src = eraInfo[selectedEra].imageUrl;
-    document.getElementById("era-image").alt = eraInfo[selectedEra].name;
+    document.getElementById("eraDisplayInput").value = eraInfo[selectedEra].name; // Update hidden input value
 } else {
     document.getElementById("eraName").textContent = "Unknown Era";
 }
-
 
