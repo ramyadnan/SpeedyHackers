@@ -1,6 +1,8 @@
 Flask
 Flask-Migrate
 flask_sqlalchemy
-flask-dance[sqla] requests
+flask-dance[sqla]
 python-dotenv
 flask_login
+openai
+scipy
