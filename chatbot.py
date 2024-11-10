@@ -22,7 +22,19 @@ client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", "sk-svcacct-cNpEjHaToqE
 
 
 @app.route('/')
-def show_era_selection():
+def index():
+    return render_template('index.html')
+
+@app.route('/health_input_form')
+def health_input_form():
+    return render_template('health_input_form.html')
+
+@app.route('/conclusions')
+def about():
+    return render_template('conclusion.html')
+
+@app.route('/era')
+def era():
     return render_template('era-select.html')
 
 @app.route('/health-input', methods=['GET'])
@@ -31,7 +43,7 @@ def show_form():
     era = request.args.get('era')
     if era:
         # Pass the 'era' variable to the template
-        return render_template('health-input-form.html', era=era)
+        return render_template('health_input_form.html', era=era)
     else:
         # If no era is selected, redirect to a default or handle it
         return "Era not specified", 400  # Or render a specific error page

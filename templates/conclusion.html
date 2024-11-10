@@ -4,7 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>History of Medicine</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">   
+
+    <nav class="navbar">
+      <div class="navbar-container">
+          <div class="navbar-menu">
+               <a href="{{ url_for('index') }}" class="nav-item">Home</a> 
+               <a href="{{ url_for('era') }}" class="nav-item">Era Selection</a>
+              
+          </div>
+      </div>
+  </nav>
 
     <style>
         html {
@@ -41,7 +51,7 @@
         </style>
         </head>
         <body style="padding: 2vw; line-height: 3vw">
-        
+          <br>
         <h1>Conclusions</h1>
         <br>
         <div class="main" id="section1">
