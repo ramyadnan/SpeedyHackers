@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Rotating Earth</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <title class = "text-align: center">Time Travel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+      
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-menu">
+                 <a href="{{ url_for('era') }}" class="nav-item">Era Selection</a> 
+                <a href="{{ url_for('about') }}" class="nav-item">About</a>                
+            </div>
+        </div>
+    </nav>
+
 </head>
 
 <body>
-    <div id="earth-container"></div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="script.js"></script>
+<br>
+    <h2>Home</h2>
+
 </body>
-
-
-
-</html>
