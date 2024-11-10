@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Survival</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-menu">
+                 <a href="{{ url_for('index') }}" class="nav-item">Home</a> 
+                <a href="{{ url_for('about') }}" class="nav-item">About</a>
+                
+            </div>
+        </div>
+    </nav>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Where would you like to travel to?</h1>
+        <!--<form id="eraForm" action="{{ url_for('show_form') }}" method="GET"> -->
+            
+            <!-- Choose Era with Image Buttons -->
+            <div class="era-selections">
+                
+                <div class="era" id="egypt" data-era="egypt">
+                    <div class="era-background"></div>
+                    <div class="era-label">Ancient Egypt</div>
+                </div>
+                <div class="era" id="medieval" data-era="medieval">
+                    <div class="era-background"></div>
+                    <div class="era-label">Medieval Europe</div>
+                </div>
+                <div class="era" id="world-war" data-era="world-war">
+                    <div class="era-background"></div>
+                    <div class="era-label">World War Times</div>
+                </div>
+                <div class="era" id="present-day" data-era="present-day">
+                    <div class="era-background"></div>
+                    <div class="era-label">Present Day</div>
+                </div>
+            </div>
+            
+        <!--</form>-->
+    </div>
+    <script src="{{ url_for('static', filename='eras.js') }}"></script>
+</body>
+</html>

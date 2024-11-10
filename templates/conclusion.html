@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History of Medicine</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">   
+
+    <nav class="navbar">
+      <div class="navbar-container">
+          <div class="navbar-menu">
+               <a href="{{ url_for('index') }}" class="nav-item">Home</a> 
+               <a href="{{ url_for('era') }}" class="nav-item">Era Selection</a>
+              
+          </div>
+      </div>
+  </nav>
+
+    <style>
+        html {
+          scroll-behavior: smooth;
+        
+          }
+
+          /*section transition effect */
+  #section1 {
+    height: 40vw;
+    background-color: grey;
+    border-radius: 50px;
+    box-shadow: 10px 10px 20px rgb(57, 57, 56) ;
+  }
+  
+  #section2 {
+    height: 25vw;
+    background-color: rgb(57, 57, 56);
+    border-radius: 50px;
+    box-shadow: 10px 10px 20px rgb(57, 57, 56) ;
+  }
+
+  #section3 {
+      height: 30vw;
+      background-color: grey;
+      border-radius: 50px;
+      box-shadow: 10px 10px 20px rgb(57, 57, 56) ;
+    }
+
+
+      .main{
+        text-align: center;
+      }
+        </style>
+        </head>
+        <body style="padding: 2vw; line-height: 3vw">
+          <br>
+        <h1>Conclusions</h1>
+        <br>
+        <div class="main" id="section1">
+          <br>
+            <h2>Big Inventions in Medicine</h2>
+          <p>Without these big medical inventions, we would not be where we are today!</p>
+          
+            Vaccination - 1978 <br>
+            Anasthesia - 1846 <br>
+            Epidiemology <br>
+            Germ Theory <br>
+            Gene Therapy <br>
+            3D Printing <br>
+            <a href="https://www.worldwidecancerresearch.org/information-and-impact/discovery-research/7-incredible-medical-breakthroughs-that-changed-the-world/">Source</a>
+          <br><br>
+          <a href="#section2"> |----> Why did we time travel?</a>
+        </div>
+        
+        <div class="main" id="section2">
+            <br>
+          <h2>Why did we time travel?</h2>
+          <p>We hoped to teach you about the history and value of medical research in a fun and interactive way!</p>
+          <br>
+          <a href="#section3">----> About the Programmers!</a>
+        </div>
+
+        <div class="main" id="section3">
+            <br>
+            <h2>About the Programmers!</h2>
+            <p>Valeria, Shasha, Ramy, and Merve made this website for the Great Uni Hack 2024 at The University of Manchester! <br>
+           We used: <br>
+           OpenAI sponsored by Reply to generate doctor images and resopnses for different eras. <br>
+           Auth0 to set up authentication.<br>
+
+                
+                <a href="https://github.com/ramyadnan/SpeedyHackers">Please give a follow on GitHub!</a>
+            </p>
+            <br>
+            <a href="#section1">Get back to the top! <----| </a>
+          </div>
+        
+        </body>
+        </html>

@@ -1,122 +1,78 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}Results{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survival Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-menu">
+                <a href="{{ url_for('index') }}" class="nav-item">Home</a>
+                <a href="{{ url_for('era') }}" class="nav-item">Era Selection</a>
+                <a href="{{ url_for('about') }}" class="nav-item">About</a>
+            </div>
+        </div>
+    </nav>
+</head>
 
-{% block content %}
-<div class="container">
-    <h1>Your Life Expectancy Result</h1>
-    <p>Your estimated life expectancy is <span id="life-expectancy"></span> years</p>
-    <p>You fall into the category: <span id="category"></span></p>
+<body>
 
-    <div id="category-image-container">
-        <img id="category-image" src="" alt="Category Image">
+    <div class="container">
+        <h1>Your Survival Prediction</h1>
+
+        <!-- Flexbox layout for content area -->
+        <div class="content">
+            <div class="info">
+                <p>{{ text_response | safe }}</p>
+            </div>
+            <div class="info">
+                <img id="era-image" src="{{ image_url }}" alt="Doctor Image">
+            </div>
+        </div>
     </div>
-    <div id="category-description"></div>
 
-    <div class="share-container">
-        <h3>Share Your Results</h3>
-        <a href="#" id="facebook-share" target="_blank" class="share-button facebook">Share on Facebook</a>
-        <a href="#" id="twitter-share" target="_blank" class="share-button twitter">Tweet</a>
-        <a href="#" id="linkedin-share" target="_blank" class="share-button linkedin">Share on LinkedIn</a>
+</body>
+
+</html>
+
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Your Health Tracker Results</h1>
+        
+        <h2>Submitted Information</h2>
+
+        <div id="submittedData"></div>
+
+        <a href="health-input-form.html">Go Back to Form</a>
     </div>
 
-    <a href="dasboard.html">Go Back to Form</a>
-</div>
+    <script>
+        function getQueryParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            let output = "<ul>";
 
-<script>
-    // Function to get query parameters from the URL
-    function getQueryParams() {
-        const params = new URLSearchParams(window.location.search);
-        let age = parseInt(params.get('age'));
-        let gender = params.get('gender');
-        let weight = parseInt(params.get('weight'));
-        let height = parseInt(params.get('height'));
-        let activityLevel = params.get('activityLevel');
-        let diet = params.get('diet');
-        let calories = parseInt(params.get('calories'));
-        let alcohol = params.get('alcohol');
-        let smoking = params.get('smoking');
-        let sleepHours = parseInt(params.get('sleepHours'));
-        let stressLevel = parseInt(params.get('stressLevel'));
+            for (let param of urlParams.entries()) {
+            output += `<li><strong>${param[0]}</strong>: ${param[1]}</li>`;
+            }
 
-        // Example calculation for life expectancy (simplified)
-        let lifeExpectancy = 80; // Start with a base value
-        if (age) lifeExpectancy -= age * 0.2;
-        if (activityLevel === 'sedentary') lifeExpectancy -= 5;
-        if (smoking === 'yes') lifeExpectancy -= 10;
-        if (alcohol === 'daily') lifeExpectancy -= 5;
-
-        // Determine category based on life expectancy
-        let category = "";
-        if (lifeExpectancy <= 50) {
-            category = "Critical";
-        } else if (lifeExpectancy <= 60) {
-            category = "Suboptimal";
-        } else if (lifeExpectancy <= 70) {
-            category = "Stable";
-        } else if (lifeExpectancy <= 80) {
-            category = "Vibrant";
-        } else {
-            category = "Timeless";
+            output += "</ul>";
+            return output;
         }
 
-        // Set the results on the page
-        document.getElementById('life-expectancy').textContent = lifeExpectancy.toFixed(1);
-        document.getElementById('category').textContent = category;
+        document.getElementById('submittedData').innerHTML = getQueryParams();
+    </script>
 
-        // Optionally set image or description based on category
-        let imgElement = document.getElementById('category-image');
-        imgElement.src = 'images/' + category.toLowerCase() + '.png';
-        document.getElementById('category-description').textContent = getCategoryDescription(category);
-    }
-
-    // Function to get a description based on the category
-    function getCategoryDescription(category) {
-        switch (category) {
-            case "Critical":
-                return "Your health is at significant risk; lifestyle changes are strongly recommended.";
-            case "Suboptimal":
-                return "There is room for improvement in your health. Consider healthier habits.";
-            case "Stable":
-                return "Your health is stable. Maintaining your current lifestyle is beneficial.";
-            case "Vibrant":
-                return "You have a vibrant health profile. Keep up the great work!";
-            case "Timeless":
-                return "You are in excellent health. You may enjoy a long and healthy life!";
-            default:
-                return "";
-        }
-    }
-    // Set up share links for social media
-    function setUpShareLinks() {
-        const currentUrl = window.location.href;
-        const lifeExpectancy = document.getElementById('life-expectancy').textContent;
-        const category = document.getElementById('category').textContent;
-
-        const shareText = `My estimated life expectancy is ${lifeExpectancy} years and I fall into the "${category}" category! Find out yours!`;
-
-        // Facebook share link
-        document.getElementById('facebook-share').href =
-            `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}&quote=${encodeURIComponent(shareText)}`;
-
-        // Twitter share link
-        document.getElementById('twitter-share').href =
-            `https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(shareText)}`;
-
-        // LinkedIn share link
-        document.getElementById('linkedin-share').href =
-            `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`;
-    }
-
-    // Call the function after page load to ensure all elements are available
-    window.onload = function () {
-        getQueryParams(); // Ensure this is called to populate life expectancy and category
-        setUpShareLinks();
-    };
-
-
-
-    // Call the function on page load
-    window.onload = getQueryParams;
-</script>
-{% endblock %}
+</body>
+</html>-->
