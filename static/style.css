@@ -6,6 +6,16 @@
     padding: 0;
 }
 
+.google-btn {
+    display: inline-block;
+    background: #4285f4;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
 /* General reset */
 * {
     margin: 0;
@@ -13,7 +23,8 @@
     box-sizing: border-box;
 }
 
-body, html {
+body,
+html {
     height: 100%;
     font-family: Arial, sans-serif;
 }
@@ -35,7 +46,8 @@ body, html {
 
 /* Form section styling */
 form {
-    width: 45%; /* Adjust width as needed */
+    width: 45%;
+    /* Adjust width as needed */
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -43,7 +55,8 @@ form {
 
 /* Info section styling */
 .info {
-    width: 45%; /* Adjust width as needed */
+    width: 45%;
+    /* Adjust width as needed */
     text-align: left;
 }
 
@@ -94,19 +107,24 @@ form {
 
 /* Hover effect */
 .era:hover {
-    transform: scaleX(1.1); /* Expands section horizontally */
-    z-index: 2; /* Bring the hovered section to the front */
+    transform: scaleX(1.1);
+    /* Expands section horizontally */
+    z-index: 2;
+    /* Bring the hovered section to the front */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
 }
 
 .era:hover .era-background {
-    transform: scale(1.1); /* Zooms in background image */
+    transform: scale(1.1);
+    /* Zooms in background image */
 }
 
 /* Dim non-hovered sections */
 .era-selections:hover .era:not(:hover) {
-    filter: brightness(0.7); /* Reduce brightness for non-hovered sections */
-    z-index: 1; /* Make sure non-hovered sections stay behind */
+    filter: brightness(0.7);
+    /* Reduce brightness for non-hovered sections */
+    z-index: 1;
+    /* Make sure non-hovered sections stay behind */
 }
 
 /* Inner background div for zoom effect */
@@ -149,12 +167,13 @@ form {
     font-size: 32px;
     font-weight: bold;
     color: white;
-    text-shadow: 4px 4px 5px rgba(0, 0, 0, 2); 
+    text-shadow: 4px 4px 5px rgba(0, 0, 0, 2);
     z-index: 10;
     transition: transform 0.3s ease;
     padding: 10px 0;
 }
 
 .era:hover .era-label {
-    transform: scale(1.1); /* Slightly scale text on hover */
+    transform: scale(1.1);
+    /* Slightly scale text on hover */
 }
